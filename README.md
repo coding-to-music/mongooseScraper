@@ -73,6 +73,17 @@ mongoosescraper@0.0.0 /mnt/ap/ap/mongooseScraper
   └── mongodb@3.7.3
 ```
 
+### Load .env 
+```java
+npm i dotenv
+```
+
+create the file .env and adjust the details from the MongoDB Atlas dashboard
+```java
+MONGODB_URI="mongodb+srv://userid:password@cluster0.zadqe.mongodb.net/CTG-Clipper?retryWrites=true&w=majority"
+```
+
+### To run the app
 ```java
 npm run start
 ```
@@ -83,5 +94,67 @@ or
 npm run trace
 ```
 
-View the UI at:  
+### View the UI at:  
 http://localhost:8080/
+
+
+Output
+```java
+
+> mongoosescraper@0.0.0 start
+> node ./server.js
+
+MONGODB_URI mongodb+srv://userid:password@cluster0.zadqe.mongodb.net/database-name?retryWrites=true&w=majority
+Example app listening on port 8080!
+Connected to MongoDB
+GET / 304 26.046 ms - -
+GET /css/style.css 304 2.153 ms - -
+GET /scraper 302 136.143 ms - 62
+Handlebars: Access has been denied to resolve the property "link" because it is not an "own property" of its parent.
+You can add a runtime option to disable the check or this warning:
+See https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access for details
+Handlebars: Access has been denied to resolve the property "isFav" because it is not an "own property" of its parent.
+You can add a runtime option to disable the check or this warning:
+See https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access for details
+Handlebars: Access has been denied to resolve the property "_id" because it is not an "own property" of its parent.
+You can add a runtime option to disable the check or this warning:
+See https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access for details
+Handlebars: Access has been denied to resolve the property "title" because it is not an "own property" of its parent.
+You can add a runtime option to disable the check or this warning:
+See https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access for details
+Handlebars: Access has been denied to resolve the property "comments" because it is not an "own property" of its parent.
+You can add a runtime option to disable the check or this warning:
+See https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access for details
+GET /articles 200 61.592 ms - 32666
+GET /css/style.css 304 0.500 ms - -
+GET /class=%22z-depth-5%22 404 1.767 ms - 160
+GET /class=%22z-depth-5%22 404 1.436 ms - 160
+GET /favorite/ 404 1.563 ms - 148
+GET /target=%22_blank%22 404 0.728 ms - 158
+GET /saved 304 18.154 ms - -
+GET /css/style.css 304 0.436 ms - -
+GET /articles 304 24.664 ms - -
+GET /css/style.css 304 0.541 ms - -
+GET /class=%22z-depth-5%22 404 0.608 ms - 160
+GET /class=%22z-depth-5%22 404 0.649 ms - 160
+```
+
+Attempt to fix by following these instructions  
+https://stackoverflow.com/questions/65822312/solved-handlebars-access-has-been-denied-to-resolve-the-property-name-becaus
+
+Install new dependancy
+```java
+npm i @handlebars/allow-prototype-access
+npm i handlebars
+```
+
+Add to server.js
+```java
+const Handlebars = require('handlebars')
+const exphbs = require('express-handlebars');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
+```
+
+
+
+
