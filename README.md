@@ -2,6 +2,8 @@
 
 https://github.com/tastaub/mongooseScraper
 
+https://github.com/coding-to-music/mongooseScraper
+
 ##### Web scraper for sports statistics [Cleaning The Glass](https://www.cleaningtheglass.com)
 
 ##### Technologies Used
@@ -80,3 +82,6 @@ or
 ```java
 npm run trace
 ```
+
+View the UI at:  
+http://localhost:8080/
