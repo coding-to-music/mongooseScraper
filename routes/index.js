@@ -14,8 +14,10 @@ router.get('/', (req,res) =>  {
 router.get('/scraper', (req,res) =>  {
   request('https://cleaningtheglass.com/articles/', (error, response, html) =>  { 
   const $ = cheerio.load(html);
+  console.log('/scraper');
 
     $('a.card.article').each((i,elem) =>  {
+      console.log('/scraper looping thru each elem');
       var article = {}
       var x = $(elem)
       article.title = x.children('h2').contents().filter(function()  {
@@ -37,6 +39,8 @@ router.get('/scraper', (req,res) =>  {
 
 
 router.get('/articles', (req,res) =>  {
+  console.log('router get /articles');
+
   Article.find({}).sort({_id: 1}).limit(20)
     .populate('comments')
     .then(data => {

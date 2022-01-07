@@ -155,6 +155,12 @@ const exphbs = require('express-handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 ```
 
-
+Modify the engine connection attributes
+```java
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main',
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
+```
 
 
