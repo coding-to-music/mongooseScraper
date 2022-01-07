@@ -163,4 +163,29 @@ app.engine('handlebars', exphbs({
 }));
 ```
 
+# Use Curl to get responses 
+
+Get the return code
+```java
+curl -o /dev/null -s -w "%{http_code}\n" http://nytimes.com/section/us
+```
+
+Output
+```java
+301
+
+Get the response body
+```java
+curl -s https://swapi.co/api/people/1/?format=json
+```java
+
+Output
+```java
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="https://pipedream.com/apps/swapi">here</A>.
+</BODY></HTML>
+```
 

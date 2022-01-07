@@ -12,8 +12,9 @@ router.get('/', (req,res) =>  {
 })
 
 router.get('/scraper', (req,res) =>  {
-  request('https://cleaningtheglass.com/articles/', (error, response, html) =>  { 
-  const $ = cheerio.load(html);
+  // request('https://cleaningtheglass.com/articles/', (error, response, html) =>  { 
+  request('https://www.nytimes.com/section/us', (error, response, html) =>  { 
+      const $ = cheerio.load(html);
   console.log('/scraper');
 
     $('a.card.article').each((i,elem) =>  {
